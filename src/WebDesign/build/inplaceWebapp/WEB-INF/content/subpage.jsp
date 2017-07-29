@@ -1,10 +1,14 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="f" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>经济管理实验教学中心</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>经济管理实验教学中心</title>
 <link href="css/style.css" type="text/css" rel="stylesheet" />
 <script src="js/jquery-1.8.2.min.js" type="text/javascript"></script>
 <script src="js/Index.js" type="text/javascript"></script>
@@ -27,61 +31,55 @@
             <div class="index_top">
                 <div class="index_nav">
                     <ul>
-                        <li><a href="index.html">首页</a> </li>
-                        <li><a href="list1.html">中心概括</a>
+                        <li><a href="index">首页</a> </li>
+                        <li><a href="#">中心概括</a>
                         	<ul>
-                                <li><a href="Detail1.html" title="中心简介">中心简介</a></li>
-                                <li><a href="Detail2.html" title="发展规划">发展规划</a></li>
-                                <li><a href="Detail3.html" title="规章制度">规章制度</a></li>
-                                <li><a href="Detail4.html" title="仪器设备">仪器设备</a></li>
-                                <li><a href="Detail4.html" title="软件介绍">软件介绍</a></li>
-                                <li><a href="Detail5.html" title="师资队伍">师资队伍</a></li>
-                                <li><a href="Detail5.html" title="实验室资源">实验室资源</a></li>
+                                <c:forEach items="${sessionScope.type1}" var="type1">
+                                <li><a href="subpage?tid=${type1.id}&sid=${type1.sort_id}" title="${type1.name}">${type1.name}</a></li>
+                                </c:forEach>
                             </ul> 
                         </li>
-                        <li><a href="list2.html">信息公示</a>
+                        <li><a href="#">信息公示</a>
                         	<ul>
-                                <li><a href="Detail6.html" title="新闻">新闻</a></li>
-                                <li><a href="Detail7.html" title="通知公告">通知公告</a></li>
+                        	  <c:forEach items="${sessionScope.type2}" var="type2">
+                                <li><a href="subpage?tid=${type2.id}&sid=${type2.sort_id}" title="${type2.name}">${type2.name }</a></li>
+                               </c:forEach>
                             </ul> 
                         </li>
-                        <li><a href="list3.html">成果与特色</a>
+                        <li><a href="#">成果与特色</a>
                         	<ul>
-                                <li><a href="Detail8.html" title="双创动态">双创动态</a></li>
+                        	  <c:forEach items="${sessionScope.type3}" var="type3">
+                                <li><a href="subpage?tid=${type3.id}&sid=${type3.sort_id}" title="${type3.name}">${type3.name }</a></li>
+                               </c:forEach>
                             </ul> 
                         </li>
-                        <li><a href="list4.html">示范与辐射</a> </li>
-                        <li><a href="list5.html">实验教学</a>
+                        <li><a href="detial?fid=24">示范与辐射</a> </li>
+                        <li><a href="#">实验教学</a>
                         	<ul>
-                                <li><a href="Detail9.html" title="课程一览">课程一览</a></li>
-                                <li><a href="Detail10.html" title="教学大纲">教学大纲</a></li>
-                                <li><a href="Detail9.html" title="实验项目">实验项目</a></li>
-                                <li><a href="Detail10.html" title="实验课件">实验课件</a></li>
-                                <li><a href="Detail9.html" title="实验案例">实验案例</a></li>
-                                <li><a href="Detail10.html" title="实验报告">实验报告</a></li>
-                                <li><a href="Detail10.html" title="实验报告">视频教学</a></li>
+                        	  <c:forEach items="${sessionScope.type5}" var="type5">
+                                <li><a href="subpage?tid=${type5.id}&sid=${type5.sort_id}" title="${type5.name}">${type5.name }</a></li>
+                               </c:forEach>
                             </ul>
                         </li>
-                        <li><a href="list6.html">教学改革</a>
+                        <li><a href="#">教学改革</a>
                         	<ul>
-                                <li><a href="Detail11.html" title="教改项目">教改项目</a></li>
-                                <li><a href="Detail12.html" title="教学论文">教学论文</a></li>
-                                <li><a href="Detail11.html" title="科研项目">科研项目</a></li>
-                                <li><a href="Detail12.html" title="教材建设">教材建设</a></li>
-                                <li><a href="Detail12.html" title="获奖">获奖</a></li>
+                        	   <c:forEach items="${sessionScope.type6}" var="type6">
+                                <li><a href="subpage?tid=${type6.id}&sid=${type6.sort_id}" title="${type6.name}">${type6.name }</a></li>
+                               </c:forEach>
                             </ul>
                         </li>
-                        <li><a href="list7.html">下载中心</a></li>
+                        <li><a href="detial?fid=23">下载中心</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
+    
     <div class="list_center">
         <div class="list_centerbg">
             <div class="list_centertitle">
-                示范与辐射<br />
-                Demonstration and radiation
+                ${sessionScope.sort1.name}<br />
+                ${sessionScope.sort1.englishname}
             </div>
         </div>
     </div>
@@ -89,11 +87,12 @@
         <div class="list_center_main">
             <div class="list_mainleft">
                 <dl>
-                    <dt>示范与辐射 </dt>
+                    <dt> ${sessionScope1.sort1.name} </dt>
                     <dd class="cur">
-                        <a href="#">示范与辐射</a>
+                      <c:forEach items="${sessionScope.type}" var="type">
+                           <a href="#">${type.name}</a>
+                       </c:forEach>
                     </dd>
-                    
                 </dl>
             </div>
             <div class="list_mainright">
@@ -103,217 +102,37 @@
                     <div class="list06">
                         <div class="list06left list06left">
                             <h4 class="h4">
-                                示范与辐射&nbsp;&nbsp;
+                              ${sessionScope.sort1.name}&nbsp;&nbsp;
                             </h4>
                         </div>
                         <div class="list06right list06right licon">
-                            <span class="a13">当前位置：首页 > 示范与辐射</span>
+                            <span class="a13">当前位置：首页 >  ${sessionScope.sort1.name}</span>
                         </div>
                     </div>
                     <ul>
-                        <li>
-                            <dl>
-                                <dt class="messdt"></dt>
-                                <dd>
-                                    <a href="#" class="title03 hovercolor" title="硕士生、博士生一卡通领取通知">硕士生、博士生一卡通领取通知</a> <span class="title04 gray">
-                                        2016-03-21</span>
-                                </dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <dl>
-                                <dt class="messdt"></dt>
-                                <dd>
-                                    <a href="#" class="title03 hovercolor" title="毕业生一卡通销户退款提醒">毕业生一卡销户通退款提醒</a> <span class="title04">
-                                        2016-03-21</span>
-                                </dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <dl>
-                                <dt class="messdt"></dt>
-                                <dd>
-                                    <a href="#" class="title03 hovercolor" title="校园无线网暂停通知">校园无线网暂停通知</a> <span class="title04">2016-03-21</span>
-                                </dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <dl>
-                                <dt class="messdt"></dt>
-                                <dd>
-                                    <a href="#" class="title03 hovercolor" title="毕业生一卡销户通退款提醒">毕业生一卡销户通退款提醒</a> <span class="title04">
-                                        2016-03-21</span>
-                                </dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <dl>
-                                <dt class="messdt"></dt>
-                                <dd>
-                                    <a href="#" class="title03 hovercolor" title="硕士生、博士生一卡通领取通知">硕士生、博士生一卡通领取通知</a> <span class="title04">
-                                        2016-03-21</span>
-                                </dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <dl>
-                                <dt class="messdt"></dt>
-                                <dd>
-                                    <a href="#" class="title03 hovercolor" title="毕业生一卡通销户退款提醒">毕业生一卡通销户退款提醒</a> <span class="title04">
-                                        2016-03-21</span>
-                                </dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <dl>
-                                <dt class="messdt"></dt>
-                                <dd>
-                                    <a href="#" class="title03 hovercolor" title="毕业生一卡销户通退款提醒">毕业生一卡销户通退款提醒</a> <span class="title04">
-                                        2016-03-21</span>
-                                </dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <dl>
-                                <dt class="messdt"></dt>
-                                <dd>
-                                    <a href="#" class="title03 hovercolor" title="华中师范大学校长杨宗凯：信息化">华中师范大学校长杨宗凯：信息化</a> <span class="title04">
-                                        2016-03-21</span>
-                                </dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <dl>
-                                <dt class="messdt"></dt>
-                                <dd>
-                                    <a href="#" class="title03 hovercolor" title="华中师范大学校长杨宗凯：信息化">华中师范大学校长杨宗凯：信息化</a> <span class="title04">
-                                        2016-03-21</span>
-                                </dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <dl>
-                                <dt class="messdt"></dt>
-                                <dd>
-                                    <a href="#" class="title03 hovercolor" title="硕士生、博士生一卡通领取通知">硕士生、博士生一卡通领取通知</a> <span class="title04 gray">
-                                        2016-03-21</span>
-                                </dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <dl>
-                                <dt class="messdt"></dt>
-                                <dd>
-                                    <a href="#" class="title03 hovercolor" title="硕士生、博士生一卡通领取通知">硕士生、博士生一卡通领取通知</a> <span class="title04 gray">
-                                        2016-03-21</span>
-                                </dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <dl>
-                                <dt class="messdt"></dt>
-                                <dd>
-                                    <a href="#" class="title03 hovercolor" title="硕士生、博士生一卡通领取通知">硕士生、博士生一卡通领取通知</a> <span class="title04 gray">
-                                        2016-03-21</span>
-                                </dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <dl>
-                                <dt class="messdt"></dt>
-                                <dd>
-                                    <a href="#" class="title03 hovercolor" title="华中师范大学校长杨宗凯：信息化">华中师范大学校长杨宗凯：信息化</a> <span class="title04">
-                                        2016-03-21</span>
-                                </dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <dl>
-                                <dt class="messdt"></dt>
-                                <dd>
-                                    <a href="#" class="title03 hovercolor" title="硕士生、博士生一卡通领取通知">硕士生、博士生一卡通领取通知</a> <span class="title04 gray">
-                                        2016-03-21</span>
-                                </dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <dl>
-                                <dt class="messdt"></dt>
-                                <dd>
-                                    <a href="#" class="title03 hovercolor" title="硕士生、博士生一卡通领取通知">硕士生、博士生一卡通领取通知</a> <span class="title04 gray">
-                                        2016-03-21</span>
-                                </dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <dl>
-                                <dt class="messdt"></dt>
-                                <dd>
-                                    <a href="#" class="title03 hovercolor" title="华中师范大学校长杨宗凯：信息化">华中师范大学校长杨宗凯：信息化</a> <span class="title04">
-                                        2016-03-21</span>
-                                </dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <dl>
-                                <dt class="messdt"></dt>
-                                <dd>
-                                    <a href="#" class="title03 hovercolor" title="硕士生、博士生一卡通领取通知">硕士生、博士生一卡通领取通知</a> <span class="title04 gray">
-                                        2016-03-21</span>
-                                </dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <dl>
-                                <dt class="messdt"></dt>
-                                <dd>
-                                    <a href="#" class="title03 hovercolor" title="华中师范大学校长杨宗凯：信息化">华中师范大学校长杨宗凯：信息化</a> <span class="title04">
-                                        2016-03-21</span>
-                                </dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <dl>
-                                <dt class="messdt"></dt>
-                                <dd>
-                                    <a href="#" class="title03 hovercolor" title="硕士生、博士生一卡通领取通知">硕士生、博士生一卡通领取通知</a> <span class="title04 gray">
-                                        2016-03-21</span>
-                                </dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <dl>
-                                <dt class="messdt"></dt>
-                                <dd>
-                                    <a href="#" class="title03 hovercolor" title="硕士生、博士生一卡通领取通知">硕士生、博士生一卡通领取通知</a> <span class="title04 gray">
-                                        2016-03-21</span>
-                                </dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <dl>
-                                <dt class="messdt"></dt>
-                                <dd>
-                                    <a href="#" class="title03 hovercolor" title="华中师范大学校长杨宗凯：信息化">华中师范大学校长杨宗凯：信息化</a> <span class="title04">
-                                        2016-03-21</span>
-                                </dd>
-                            </dl>
-                        </li>
-                    </ul>
-                    <div class="pageing">
-                        <ul class="page">
-                            <li><a href="#"><</a></li>
-                            <li><a href="#" class="cur">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li><li><span>...</span></li>
-                            <li><a href="#">></a></li>
-                        </ul>
-                        <ul class="pageingtz">
+                  <c:forEach items="${requestScope.information4}" var="information4">
                          <li>
-                         跳转：<input type="text" class="input"/>&nbsp;页&nbsp;<a href="#" class="a13">GO</a>
-                         </li>
-                        </ul>
+                            <dl>
+                                <dt class="messdt"></dt>
+                                <dd>
+                                    <a href="detial?fid=${information4.id}" class="title03 hovercolor" title="${information4.title}">${information4.title}</a> 
+                                    <span class="title04">
+                                    <f:formatDate value="${information4.date}" type="date" dateStyle="long"/>
+								   </span>
+                                </dd>
+                            </dl>
+                        </li>
+                  </c:forEach>
+             
+			 <div >
+			  <!-- 分页标签 -->
+			      <fkjava:pager
+	  	        pageIndex="${requestScope.pageModel.pageIndex}" 
+	  	        pageSize="${requestScope.pageModel.pageSize}" 
+	  	        recordCount="${requestScope.pageModel.recordCount}" 
+	  	        style="digg"
+	  	        submitUrl="subpage?pageIndex={0}&tid=${tid}&sid=${sessionScope.sort1.id}"/>
+			</div>
                     </div>
                 </div>
             </div>
